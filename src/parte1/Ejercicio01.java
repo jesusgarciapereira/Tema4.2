@@ -2,8 +2,17 @@ package parte1;
 
 import java.util.Scanner;
 
+/**
+ * Clase que representa al Ejercicio 1 del apartado Tema 4.2 Parte 1: Introducir
+ * por teclado dos frases e indicar cual de ellas es la mas corta, es decir, la
+ * que contiene menos caracteres
+ */
 public class Ejercicio01 {
 
+	/**
+	 * Clase main
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		// Frases que le pediremos al usuario
