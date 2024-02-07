@@ -26,19 +26,19 @@ public class Ejercicio01 {
 		// Y la asignamos a frase2
 		frase2 = sc.nextLine();
 
-		// Asignamos a fraseMasCorta es String de menos longitud
-		fraseMasCorta = frase1.length() < frase2.length() ? frase1 : frase2;
-
 		// Mostramos el resultado
 		// Si ambas frases tienen distinta longitud
-		if (frase1.length() != frase2.length())
+		if (frase1.length() != frase2.length()) {
+			// Asignamos a fraseMasCorta es String de menos longitud
+			fraseMasCorta = frase1.length() < frase2.length() ? frase1 : frase2;
 			// Mostramos este mensaje
 			System.out.println("La frase \"" + fraseMasCorta + "\" es la más corta");
+		}
 		// En caso contrario
 		else
 			// Mostramos este otro mensaje
 			System.out.println("Ambas frases tienen la misma longitud");
-		
+
 		// Cerramos el Scanner
 		sc.close();
 
