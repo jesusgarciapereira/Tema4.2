@@ -37,8 +37,7 @@ public class Ejercicio09 {
 		// Variable local del contador para nuestro bucle while
 		int i = 0;
 
-		// Mientras el contador sea menor que la longitud del conjunto1 y el char c no
-		// haya sido modificado se ejecutarán las siguientes instrucciones
+		// Mientras el contador sea menor que la longitud del conjunto1 se ejecutarán las siguientes instrucciones
 		while (i < conjunto1.length) {
 			// Si el caracter del parámetro es igual a algún elemento del conjunto1
 			if (c == conjunto1[i]) {
