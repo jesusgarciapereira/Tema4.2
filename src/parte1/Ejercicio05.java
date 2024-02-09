@@ -20,7 +20,7 @@ public class Ejercicio05 {
 
 		// Le pedimos al usuario que introduzca una frase
 		System.out.println(
-				"Introduzca una frase, las leeré y mostraré hasta que aparezca la palabra \"fin\" (en mayúsculas o minúsculas)");
+				"Introduzca unas palabras, las leeré y mostraré hasta que aparezca la palabra \"fin\" (en mayúsculas o minúsculas)");
 		// Y la asignamos a nuestra variable cadena
 		palabras = sc.nextLine();
 
