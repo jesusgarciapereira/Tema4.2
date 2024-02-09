@@ -108,7 +108,7 @@ public class Ejercicio02 {
 	}
 
 	/**
-	 * Clase main
+	 * Metodo main
 	 * 
 	 * @param args
 	 */
