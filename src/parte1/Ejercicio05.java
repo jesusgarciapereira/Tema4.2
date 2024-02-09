@@ -2,8 +2,17 @@ package parte1;
 
 import java.util.Scanner;
 
+/**
+ * Clase que representa al Ejercicio 5 del apartado Tema 4.2 Parte 1: Terminar
+ * de leer con la palabra "fin"
+ */
 public class Ejercicio05 {
 
+	/**
+	 * Metodo main
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// Cadena de palabras introducidas por el usuario
 		String palabras = "";
@@ -11,7 +20,7 @@ public class Ejercicio05 {
 		String palabrasEnMinusculas = "";
 		// Cadena de palabras que mostraremos
 		String palabrasMostradas = "";
-		
+
 		// Constante con la palabra tabú que buscaremos para no mostrarla
 		final String PALABRA_TABU = " fin ";
 
