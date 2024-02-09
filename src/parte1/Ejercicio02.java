@@ -79,6 +79,7 @@ public class Ejercicio02 {
 		// Mensaje de bienvenida
 		System.out.println("Bienvenidos a la versión avanzada del juego \"Acierta la contraseña\"");
 
+		// Llamamos a la función introducirContrasennia()
 		introducirContrasennia();
 
 		// Mientras ambas frases sean diferentes, repetiremos todas estas instrucciones
