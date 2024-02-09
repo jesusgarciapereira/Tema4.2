@@ -19,14 +19,11 @@ public class Ejercicio02 {
 	 * Scanner activado
 	 */
 	static Scanner sc = new Scanner(System.in);
-
+	
 	/**
-	 * Funcion que representa la version basica del juego "Acierta la contrasennia"
+	 * Funcion para introducir la contrasennia y pedir el primer intento del jugador 2
 	 */
-	public static void aciertaLaContrasennia() {
-		// Mensaje de bienvenida
-		System.out.println("Bienvenidos a la versión básica del juego \"Acierta la contraseña\"");
-
+	public static void introducirContrasennia() {
 		// Le pedimos al jugador 1 la contraseña
 		System.out.println("Jugador 1, introduzca la contraseña");
 		// Y la asignamos a la primera frase
@@ -36,6 +33,17 @@ public class Ejercicio02 {
 		System.out.println("Jugador 2, adivine la contraseña (teniendo en cuenta mayúsculas y minúsculas)");
 		// Y la asignamos a la segunda frase
 		segundaFrase = sc.nextLine();
+	}
+
+	/**
+	 * Funcion que representa la version basica del juego "Acierta la contrasennia"
+	 */
+	public static void aciertaLaContrasennia() {
+		// Mensaje de bienvenida
+		System.out.println("Bienvenidos a la versión básica del juego \"Acierta la contraseña\"");
+
+		// Llamamos a la función introducirContrasennia()
+		introducirContrasennia();
 
 		// Mientras ambas frases sean diferentes, repetiremos todas estas instrucciones
 		while (!segundaFrase.equals(primeraFrase)) {
@@ -61,6 +69,8 @@ public class Ejercicio02 {
 
 	}
 
+
+
 	/**
 	 * Funcion que representa la version avanzada del juego "Acierta la
 	 * contrasennia"
@@ -69,15 +79,7 @@ public class Ejercicio02 {
 		// Mensaje de bienvenida
 		System.out.println("Bienvenidos a la versión avanzada del juego \"Acierta la contraseña\"");
 
-		// Le pedimos al jugador 1 la contraseña
-		System.out.println("Jugador 1, introduzca la contraseña");
-		// Y la asignamos a la primera frase
-		primeraFrase = sc.nextLine();
-
-		// Le pedimos al jugador 2 que trate de adivinar la contraseña
-		System.out.println("Jugador 2, adivine la contraseña (teniendo en cuenta mayúsculas y minúsculas)");
-		// Y la asignamos a la segunda frase
-		segundaFrase = sc.nextLine();
+		introducirContrasennia();
 
 		// Mientras ambas frases sean diferentes, repetiremos todas estas instrucciones
 		while (!segundaFrase.equals(primeraFrase)) {
