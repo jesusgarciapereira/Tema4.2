@@ -28,18 +28,20 @@ public class Ejercicio06 {
 		System.out.println(
 				"La leeré y mostraré todas las palabras escritas hasta que introduzcas la palabra \"fin\" (sin importar mayúsculas o minúsculas)");
 
-		// Y la asignamos a nuestra variable palabra
-		palabra = sc.nextLine();
+		// Y la asignamos a nuestra variable palabra (next() para que no lea espacios)
+		palabra = sc.next();
 
 		// Mientras la palabra introducida no sea nuestra palabra tabú
 		while (!palabra.equalsIgnoreCase("fin")) {
+			// Limpiamos el buffer
+			sc.nextLine();
 			// Concatenamos cada palabra en nuestro conjunto
 			conjuntoPalabras += palabra + " ";
 
 			// Pedimos otra palabra al usuario
 			System.out.println("Bien, introduzca otra palabra");
 			// Y la asignamos a nuestra variable palabra
-			palabra = sc.nextLine();
+			palabra = sc.next();
 		}
 
 		// Mostramos el resultado
