@@ -16,7 +16,7 @@ public class Ejercicio06 {
 	public static void main(String[] args) {
 		// Cada una de las palabras introducidas por el usuario
 		String palabra = "";
-		
+
 		// Conjunto de palabras que mostraremos
 		String conjuntoPalabras = "";
 
@@ -24,22 +24,24 @@ public class Ejercicio06 {
 		Scanner sc = new Scanner(System.in);
 
 		// Le pedimos al usuario que introduzca una palabra
+		System.out.println("Introduzca una palabra");
 		System.out.println(
-				"Introduzca una palabra, la leeré y mostraré todas las palabras escritas hasta que introduzcas la palabra \"fin\" (en mayúsculas o minúsculas)");
+				"La leeré y mostraré todas las palabras escritas hasta que introduzcas la palabra \"fin\" (sin importar mayúsculas o minúsculas)");
+
 		// Y la asignamos a nuestra variable palabra
 		palabra = sc.nextLine();
-		
+
 		// Mientras la palabra introducida no sea nuestra palabra tabú
-		while(!palabra.equalsIgnoreCase("fin")) {
+		while (!palabra.equalsIgnoreCase("fin")) {
 			// Concatenamos cada palabra en nuestro conjunto
 			conjuntoPalabras += palabra + " ";
-			
+
 			// Pedimos otra palabra al usuario
 			System.out.println("Bien, introduzca otra palabra");
 			// Y la asignamos a nuestra variable palabra
 			palabra = sc.nextLine();
 		}
-		
+
 		// Mostramos el resultado
 		System.out.println(conjuntoPalabras);
 
