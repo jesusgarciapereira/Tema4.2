@@ -14,42 +14,34 @@ public class Ejercicio06 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Cadena de palabras introducidas por el usuario
-		String palabras = "";
-		// Copia de la cadena de palabras introducidas por el usuario pero en minúsculas
-		String palabrasEnMinusculas = "";
-		// Cadena de palabras que mostraremos
-		String palabrasMostradas = "";
-
-		// Constante con la palabra tabú que buscaremos para no mostrarla
-		final String PALABRA_TABU = " fin ";
+		// Cada una de las palabras introducidas por el usuario
+		String palabra = "";
+		
+		// Conjunto de palabras que mostraremos
+		String conjuntoPalabras = "";
 
 		// Activamos el Scanner
 		Scanner sc = new Scanner(System.in);
 
-		// Le pedimos al usuario que introduzca una frase
+		// Le pedimos al usuario que introduzca una palabra
 		System.out.println(
-				"Introduzca unas palabras, las leeré y mostraré hasta que aparezca la palabra \"fin\" (en mayúsculas o minúsculas)");
-		// Y la asignamos a nuestra variable cadena
-		palabras = sc.nextLine();
-
-		// Copiamos las palabras introducidas por el usuario en otra variable y en
-		// minúsculas para hacer la búsqueda
-		palabrasEnMinusculas = palabras.toLowerCase();
-
-		// Si la palabra tabú no aparece en las palabras en minúsculas
-		if (palabrasEnMinusculas.indexOf(PALABRA_TABU) == -1)
-			// Asignamos a las palabras mostradas las palabras introducidas por el usuario
-			// tal cual
-			palabrasMostradas = palabras;
-		// En caso contrario
-		else
-			// Asignamos a las palabras mostradas las palabras introducidas por el usuario
-			// desde el inicio hasta la aparición de la palabra tabú
-			palabrasMostradas = palabras.substring(0, palabrasEnMinusculas.indexOf(PALABRA_TABU));
-
+				"Introduzca una palabra, la leeré y mostraré todas las palabras escritas hasta que introduzcas la palabra \"fin\" (en mayúsculas o minúsculas)");
+		// Y la asignamos a nuestra variable palabra
+		palabra = sc.nextLine();
+		
+		// Mientras la palabra introducida no sea nuestra palabra tabú
+		while(!palabra.equalsIgnoreCase("fin")) {
+			// Concatenamos cada palabra en nuestro conjunto
+			conjuntoPalabras += palabra + " ";
+			
+			// Pedimos otra palabra al usuario
+			System.out.println("Bien, introduzca otra palabra");
+			// Y la asignamos a nuestra variable palabra
+			palabra = sc.nextLine();
+		}
+		
 		// Mostramos el resultado
-		System.out.println(palabrasMostradas);
+		System.out.println(conjuntoPalabras);
 
 		// Cerramos el Scanner
 		sc.close();
