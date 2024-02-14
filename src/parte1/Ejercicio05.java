@@ -3,10 +3,31 @@ package parte1;
 import java.util.Scanner;
 
 /**
- * Clase que representa al Ejercicio 5 del apartado Tema 4.2 Parte 1: Terminar
- * de leer con la palabra "fin"
+ * Clase que representa al Ejercicio 5 del apartado Tema 4.2 Parte 1: Cadena
+ * invertida
  */
 public class Ejercicio05 {
+
+	/**
+	 * 
+	 * @param cadena Cadena que queremos invertir
+	 * @return cadenaInvertida Cadena del parametro en orden inverso
+	 */
+	public static String invierteCadena(String cadena) {
+		// Cadena que devolverá la función
+		String cadenaInvertida = "";
+
+		// Bucle for que recorrerá cada caracter de la cadena del parámetro pero en
+		// orden inverso
+		for (int i = cadena.length() - 1; i >= 0; i--) {
+			// A la cadena invertida le concatenamos cada caracter por el que pasa el bucle
+			cadenaInvertida += cadena.charAt(i);
+		}
+
+		// Devolverá la cadena en orden inverso
+		return cadenaInvertida;
+
+	}
 
 	/**
 	 * Metodo main
@@ -14,45 +35,29 @@ public class Ejercicio05 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Cadena de palabras introducidas por el usuario
-		String palabras = "";
-		// Copia de la cadena de palabras introducidas por el usuario pero en minúsculas
-		String palabrasEnMinusculas = "";
-		// Cadena de palabras que mostraremos
-		String palabrasMostradas = "";
 
-		// Constante con la palabra tabú que buscaremos para no mostrarla
-		final String PALABRA_TABU = " fin ";
+		// Cadena que introducirá el usuario
+		String cadena = "";
+		// Cadena introducida por el usuario pero invertida
+		String cadenaInvertida = "";
 
 		// Activamos el Scanner
 		Scanner sc = new Scanner(System.in);
 
-		// Le pedimos al usuario que introduzca una frase
-		System.out.println(
-				"Introduzca unas palabras, las leeré y mostraré hasta que aparezca la palabra \"fin\" (en mayúsculas o minúsculas)");
+		// Le pedimos al usuario que introduzca una cadena de caracteres
+		System.out.println("Introduzca una cadena de caracteres, te la mostraré invertida");
 		// Y la asignamos a nuestra variable cadena
-		palabras = sc.nextLine();
+		cadena = sc.nextLine();
 
-		// Copiamos las palabras introducidas por el usuario en otra variable y en
-		// minúsculas para hacer la búsqueda
-		palabrasEnMinusculas = palabras.toLowerCase();
-
-		// Si la palabra tabú no aparece en las palabras en minúsculas
-		if (palabrasEnMinusculas.indexOf(PALABRA_TABU) == -1)
-			// Asignamos a las palabras mostradas las palabras introducidas por el usuario
-			// tal cual
-			palabrasMostradas = palabras;
-		// En caso contrario
-		else
-			// Asignamos a las palabras mostradas las palabras introducidas por el usuario
-			// desde el inicio hasta la aparición de la palabra tabú
-			palabrasMostradas = palabras.substring(0, palabrasEnMinusculas.indexOf(PALABRA_TABU));
+		// Asignamos a la cadena invertida la cadena devuelta por la funcion
+		// invierteCadena()
+		cadenaInvertida = invierteCadena(cadena);
 
 		// Mostramos el resultado
-		System.out.println(palabrasMostradas);
-
+		System.out.println("La cadena \"" + cadena + "\" al revés sería: \"" + cadenaInvertida + "\"");
+		
 		// Cerramos el Scanner
 		sc.close();
-
 	}
+
 }

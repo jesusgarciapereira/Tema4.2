@@ -3,51 +3,10 @@ package parte1;
 import java.util.Scanner;
 
 /**
- * Clase que representa al Ejercicio 6 del apartado Tema 4.2 Parte 1: Solicitar
- * frase y palabra para buscar la palabra en la frase
+ * Clase que representa al Ejercicio 6 del apartado Tema 4.2 Parte 1: Terminar
+ * de leer con la palabra "fin"
  */
 public class Ejercicio06 {
-	/**
-	 * Frase en el que buscaremos la palabra
-	 */
-	public static String frase = "";
-	/**
-	 * Palabra que se buscará en la frase
-	 */
-	public static String palabra = "";
-
-	/**
-	 * Scanner activado
-	 */
-	public static Scanner sc = new Scanner(System.in);
-
-	/**
-	 * Función que devolvera el numero de veces que aparece la palabra del parametro
-	 * en la frase del parametro
-	 * 
-	 * @param frase   String en donde realizaremos la busqueda
-	 * @param palabra Palabra que buscaremos en la frase
-	 * @return Numero de veces que la palabra aparece en la frase
-	 */
-	public static int vecesPalabraEnFrase(String frase, String palabra) {
-		// Cantidad de veces que la palabra aparece en la frase (inicializada en 0)
-		int cantPalabra = 0;
-
-		// Ponemos la frase y la palabra en minúsculas para hacer la busqueda
-		frase = frase.toLowerCase();
-		palabra = palabra.toLowerCase();
-		
-		// Mientras exista la palabra en la frase
-		while (frase.indexOf(palabra) != -1) {
-			// La frase se acortará hasta la última apararición de la palabra
-			frase = frase.substring(0, frase.lastIndexOf(palabra));
-			// E incrementamos la cantidad de veces que la palabra aparece en la frase
-			cantPalabra++;
-		}
-
-		// Devolverá el resultado del contador
-		return cantPalabra;
-	}
 
 	/**
 	 * Metodo main
@@ -55,33 +14,45 @@ public class Ejercicio06 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		// Cadena de palabras introducidas por el usuario
+		String palabras = "";
+		// Copia de la cadena de palabras introducidas por el usuario pero en minúsculas
+		String palabrasEnMinusculas = "";
+		// Cadena de palabras que mostraremos
+		String palabrasMostradas = "";
 
-		// Frase y palabra que le pediremos al usuario
-		String frase = "";
-		String palabra = "";
+		// Constante con la palabra tabú que buscaremos para no mostrarla
+		final String PALABRA_TABU = " fin ";
 
-		// Cantidad de veces que la palabra aparece en la frase
-		int cantPalabra;
+		// Activamos el Scanner
+		Scanner sc = new Scanner(System.in);
 
-		// Le pedimos al usuario una frase
-		System.out.println("Introduzca una frase");
-		// Y la asignamos a la variable frase
-		frase = sc.nextLine();
+		// Le pedimos al usuario que introduzca una frase
+		System.out.println(
+				"Introduzca unas palabras, las leeré y mostraré hasta que aparezca la palabra \"fin\" (en mayúsculas o minúsculas)");
+		// Y la asignamos a nuestra variable cadena
+		palabras = sc.nextLine();
 
-		// Le pedimos al usuario una palabra
-		System.out.println("Introduzca una palabra para buscar en la frase");
-		// Y la asignamos a la variable palabra
-		palabra = sc.nextLine();
+		// Copiamos las palabras introducidas por el usuario en otra variable y en
+		// minúsculas para hacer la búsqueda
+		palabrasEnMinusculas = palabras.toLowerCase();
 
-		// Asignamos a cantPalabra el valor devuelto por la función
-		// vecesPalabraEnFrase()
-		cantPalabra = vecesPalabraEnFrase(frase, palabra);
+		// Si la palabra tabú no aparece en las palabras en minúsculas
+		if (palabrasEnMinusculas.indexOf(PALABRA_TABU) == -1)
+			// Asignamos a las palabras mostradas las palabras introducidas por el usuario
+			// tal cual
+			palabrasMostradas = palabras;
+		// En caso contrario
+		else
+			// Asignamos a las palabras mostradas las palabras introducidas por el usuario
+			// desde el inicio hasta la aparición de la palabra tabú
+			palabrasMostradas = palabras.substring(0, palabrasEnMinusculas.indexOf(PALABRA_TABU));
 
 		// Mostramos el resultado
-		System.out.println("La palabra \"" + palabra + "\" aparece " + cantPalabra + " veces");
+		System.out.println(palabrasMostradas);
 
 		// Cerramos el Scanner
 		sc.close();
-	}
 
+	}
 }

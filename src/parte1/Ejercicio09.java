@@ -3,19 +3,25 @@ package parte1;
 import java.util.Scanner;
 
 /**
- * Clase que representa al Ejercicio 9 del apartado Tema 4.2 Parte 1:
- * Codificador
+ * Clase que representa al Ejercicio 9 del apartado Tema 4.2 Parte 1: Idioma de
+ * Javalandia
  */
 public class Ejercicio09 {
 
 	/**
-	 * Tabla de caracteres correspondiente al conjunto 1
+	 * String que indicaremos si es de Javalandia
 	 */
-	public static char[] conjunto1 = { 'e', 'i', 'k', 'm', 'p', 'q', 'r', 's', 't', 'u', 'v' };
+	public static String frase;
+
 	/**
-	 * Tabla de caracteres correspondiente al conjunto 2
+	 * Muletilla inicial del idioma de Javalandia
 	 */
-	public static char[] conjunto2 = { 'p', 'v', 'i', 'u', 'm', 't', 'e', 'r', 'k', 'q', 's' };
+	public static String muletillaInicial = "Javalín, javalón\t";
+
+	/**
+	 * Muletilla final del idioma de Javalandia
+	 */
+	public static String muletillaFinal = "\tjavalén, len, len";
 
 	/**
 	 * Scanner activado
@@ -23,36 +29,52 @@ public class Ejercicio09 {
 	public static Scanner sc = new Scanner(System.in);
 
 	/**
-	 * Funcion que representa un codificador
+	 * Funcion que determina si la frase del parametro pertenece al idioma de
+	 * Javalandia
 	 * 
-	 * @param conjunto1 Conjunto de caracteres char que seran modificados
-	 * @param conjunto2 Conjunto de caracteres char que seran el resultado del
-	 *                  cambio
-	 * @param c         Caracter que sera cambiado o no, segun si esta presente en
-	 *                  el conjunto1
-	 * @return Caracter del parametro, modificado o no
+	 * @param frase Frase en la que comprobaremos si existe alguna de sus muletillas
+	 * @return True o false segun si la frase es del idioma de Javalandia
 	 */
-	public static char codifica(char conjunto1[], char conjunto2[], char c) {
+	public static boolean esJavalandia(String frase) {
+		// Booleano que indica si la frase es de Javalandia (inicializada como false)
+		boolean esJavalandia = false;
 
-		// Variable local del contador para nuestro bucle while
-		int i = 0;
+		// Si alguna de las dos muletillas está presente en la frase
+		if (frase.indexOf(muletillaInicial) != -1 || frase.indexOf(muletillaFinal) != -1)
+			// Asignamos nuestro booleano como true
+			esJavalandia = true;
 
-		// Mientras el contador sea menor que la longitud del conjunto1 se ejecutarán las siguientes instrucciones
-		while (i < conjunto1.length) {
-			// Si el caracter del parámetro es igual a algún elemento del conjunto1
-			if (c == conjunto1[i]) {
-				// Se le asignará el elemento correspondiente del conjunto2
-				c = conjunto2[i];
-				// Y asignamos el contador como la longitud del conjunto1 menos 1 para así forzar la
-				// salida del bucle
-				i = conjunto1.length - 1;
-			}
-			// En cada iteración incrementamos el contador
-			i++;
+		// Devolverá el valor del booleano
+		return esJavalandia;
+	}
+
+	/**
+	 * Funcion que muestra la traduccion de la frase introducida
+	 * 
+	 * @param frase Frase a traducir
+	 */
+	public static void traduceJavalandia(String frase) {
+		// Traduccion que mostrará
+		String traduccion = "";
+
+		// Si en la frase existen ambas muletillas
+		if (frase.indexOf(muletillaInicial) != -1 && frase.indexOf(muletillaFinal) != -1)
+			// Mostraremos este mensaje
+			System.out.println("No existe dialecto que utilice ambas muletillas en la misma frase");
+		// En caso contrario
+		else {
+			// Si en la frase está presente sólo la muletilla inicial
+			if (frase.indexOf(muletillaInicial) != -1)
+				// Asignamos a la traducción la frase sin la muletilla inicial
+				traduccion = frase.substring(muletillaInicial.length());
+			// Si en la frase está presente sólo la muletilla final
+			else if (frase.indexOf(muletillaFinal) != -1)
+				// Asignamos a la traducción la frase sin la muletilla final
+				traduccion = frase.substring(0, frase.indexOf(muletillaFinal));
+
+			// Y mostramos la traducción
+			System.out.println(traduccion);
 		}
-
-		// Devolverá el caracter char c
-		return c;
 
 	}
 
@@ -62,28 +84,29 @@ public class Ejercicio09 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Texto que le pediremos al usuario
-		String texto = "";
-		// Texto anterior pero codificado
-		String textoCodificado = "";
+		// Frase que le pediremos al usuario
+		String frase;
 
-		// Le pedimos al usuario un texto
-		System.out.println("Introduzca un texto y lo mostraré codificado");
-		// Y lo asignamos a la variable texto
-		texto = sc.nextLine();
+		// Booleano que indica si la frase es de Javalandia (inicializada como false)
+		boolean esJavalandia;
 
-		// Ponemos el texto en minúsculas
-		texto = texto.toLowerCase();
+		// Le pedimos al usuario una frase
+		System.out.println("Escriba la frase a traducir");
+		// Y la asignamos a nuestra variable String
+		frase = sc.nextLine();
 
-		// Bucle for que recorrerá cada caracter del texto
-		for (int i = 0; i < texto.length(); i++) {
-			// Llamamos a la función codifica() con el caracter correspondiente a la
-			// posición en la que estamos y los concatenamos todos con el texto codificado
-			textoCodificado += codifica(conjunto1, conjunto2, texto.charAt(i));
-		}
+		// Llamamos a la función esJavalandia() para asignar un valor a nuestro booleano
+		esJavalandia = esJavalandia(frase);
 
-		// Mostramos el resultado
-		System.out.println(textoCodificado);
+		// Si la frase no es de Javalandia
+		if (!esJavalandia)
+			// Mostramos este mensaje
+			System.out.println("La frase introducida no es de Javalandia");
+		// En caso contrario
+		else
+			// Llamamos a la función traduceJavalandia() para que muestre la traducción
+			// correspondiente
+			traduceJavalandia(frase);
 
 		// Cerramos el Scanner
 		sc.close();

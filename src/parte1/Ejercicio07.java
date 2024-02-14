@@ -3,15 +3,18 @@ package parte1;
 import java.util.Scanner;
 
 /**
- * Clase que representa al Ejercicio 7 del apartado Tema 4.2 Parte 1: Indicar si
- * es un palindromo
+ * Clase que representa al Ejercicio 7 del apartado Tema 4.2 Parte 1: Solicitar
+ * frase y palabra para buscar la palabra en la frase
  */
 public class Ejercicio07 {
-
 	/**
-	 * String que indicaremos si es palindromo
+	 * Frase en el que buscaremos la palabra
 	 */
-	public static String frase;
+	public static String frase = "";
+	/**
+	 * Palabra que se buscará en la frase
+	 */
+	public static String palabra = "";
 
 	/**
 	 * Scanner activado
@@ -19,46 +22,31 @@ public class Ejercicio07 {
 	public static Scanner sc = new Scanner(System.in);
 
 	/**
-	 * Funcion que nos indica si el String introducido en el parametro es un
-	 * palindromo
+	 * Función que devolvera el numero de veces que aparece la palabra del parametro
+	 * en la frase del parametro
 	 * 
-	 * @param frase String que comprobara
-	 * @return True o false segun si la frase es un palindromo
+	 * @param frase   String en donde realizaremos la busqueda
+	 * @param palabra Palabra que buscaremos en la frase
+	 * @return Numero de veces que la palabra aparece en la frase
 	 */
-	public static boolean esPalindromo(String frase) {
-		// Variable booleana inicializada como falso
-		boolean esPalindromo = false;
+	public static int vecesPalabraEnFrase(String frase, String palabra) {
+		// Cantidad de veces que la palabra aparece en la frase (inicializada en 0)
+		int cantPalabra = 0;
 
-		// Frase sin los espacios
-		String fraseSinEspacios = "";
-		// String anterior pero invertido
-		String fraseSinEspaciosInvertida = "";
-
-		// Ponemos toda la frase del parámetro en minúsculas para hacer la comprobación
+		// Ponemos la frase y la palabra en minúsculas para hacer la busqueda
 		frase = frase.toLowerCase();
-
-		// Bucle for que recorre cada caracter de la frase del parámetro
-		for (int i = 0; i < frase.length(); i++) {
-			// Si el caracter en el que estamos no es un espacio
-			if (frase.charAt(i) != ' ')
-				// Lo asignamos y concatenamos en la frase sin espacios
-				fraseSinEspacios += frase.charAt(i);
+		palabra = palabra.toLowerCase();
+		
+		// Mientras exista la palabra en la frase
+		while (frase.indexOf(palabra) != -1) {
+			// La frase se acortará hasta la última apararición de la palabra
+			frase = frase.substring(0, frase.lastIndexOf(palabra));
+			// E incrementamos la cantidad de veces que la palabra aparece en la frase
+			cantPalabra++;
 		}
 
-		// Bucle for que recorre cada caracter de la frase sin espacios desde el final
-		for (int i = fraseSinEspacios.length() - 1; i >= 0; i--) {
-			// Asignamos y concatenamos en la frase invertida cada caracter de la frase sin
-			// espacios empezando por el final
-			fraseSinEspaciosInvertida += fraseSinEspacios.charAt(i);
-		}
-
-		// Si las dos frases son iguales
-		if (fraseSinEspaciosInvertida.equals(fraseSinEspacios))
-			// Asignamos esPalindromo como true
-			esPalindromo = true;
-
-		// Devolverá nuestra variable booleana
-		return esPalindromo;
+		// Devolverá el resultado del contador
+		return cantPalabra;
 	}
 
 	/**
@@ -67,24 +55,33 @@ public class Ejercicio07 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Frase que le pediremos al usuario
+
+		// Frase y palabra que le pediremos al usuario
 		String frase = "";
+		String palabra = "";
 
-		// Booleano que determinará si la frase es un palíndromo
-		boolean esPalindromo;
+		// Cantidad de veces que la palabra aparece en la frase
+		int cantPalabra;
 
-		// Le pedimos una frase al usuario
-		System.out.println("Escriba una palabra o una frase, indicaré si es un palíndromo (evite el uso de tildes)");
-		// Y lo asignamos a la frase
+		// Le pedimos al usuario una frase
+		System.out.println("Introduzca una frase");
+		// Y la asignamos a la variable frase
 		frase = sc.nextLine();
 
-		// Llamamos a la funcion esPalindromo() con la frase como parámetro y asignamos
-		// el valor devuelto a nuestro booleano
-		esPalindromo = esPalindromo(frase);
+		// Le pedimos al usuario una palabra
+		System.out.println("Introduzca una palabra para buscar en la frase");
+		// Y la asignamos a la variable palabra
+		palabra = sc.nextLine();
+
+		// Asignamos a cantPalabra el valor devuelto por la función
+		// vecesPalabraEnFrase()
+		cantPalabra = vecesPalabraEnFrase(frase, palabra);
 
 		// Mostramos el resultado
-		System.out.println(frase + (esPalindromo ? " es " : " no es ") + "un palíndromo");
+		System.out.println("La palabra \"" + palabra + "\" aparece " + cantPalabra + " veces");
 
+		// Cerramos el Scanner
+		sc.close();
 	}
 
 }

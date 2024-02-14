@@ -38,7 +38,7 @@ public class Ejercicio01 {
 		// Mostramos el resultado
 		// Si ambas frases tienen distinta longitud
 		if (frase1.length() != frase2.length()) {
-			// Asignamos a fraseMasCorta es String de menos longitud
+			// Asignamos a fraseMasCorta el String de menos longitud
 			fraseMasCorta = frase1.length() < frase2.length() ? frase1 : frase2;
 			// Mostramos este mensaje
 			System.out.println("La frase \"" + fraseMasCorta + "\" es la más corta");

@@ -3,25 +3,15 @@ package parte1;
 import java.util.Scanner;
 
 /**
- * Clase que representa al Ejercicio 8 del apartado Tema 4.2 Parte 1: Idioma de
- * Javalandia
+ * Clase que representa al Ejercicio 8 del apartado Tema 4.2 Parte 1: Indicar si
+ * es un palindromo
  */
 public class Ejercicio08 {
 
 	/**
-	 * String que indicaremos si es de Javalandia
+	 * String que indicaremos si es palindromo
 	 */
 	public static String frase;
-
-	/**
-	 * Muletilla inicial del idioma de Javalandia
-	 */
-	public static String muletillaInicial = "Javalín, javalón\t";
-
-	/**
-	 * Muletilla final del idioma de Javalandia
-	 */
-	public static String muletillaFinal = "\tjavalén, len, len";
 
 	/**
 	 * Scanner activado
@@ -29,53 +19,46 @@ public class Ejercicio08 {
 	public static Scanner sc = new Scanner(System.in);
 
 	/**
-	 * Funcion que determina si la frase del parametro pertenece al idioma de
-	 * Javalandia
+	 * Funcion que nos indica si el String introducido en el parametro es un
+	 * palindromo
 	 * 
-	 * @param frase Frase en la que comprobaremos si existe alguna de sus muletillas
-	 * @return True o false segun si la frase es del idioma de Javalandia
+	 * @param frase String que comprobara
+	 * @return True o false segun si la frase es un palindromo
 	 */
-	public static boolean esJavalandia(String frase) {
-		// Booleano que indica si la frase es de Javalandia (inicializada como false)
-		boolean esJavalandia = false;
+	public static boolean esPalindromo(String frase) {
+		// Variable booleana inicializada como falso
+		boolean esPalindromo = false;
 
-		// Si alguna de las dos muletillas está presente en la frase
-		if (frase.indexOf(muletillaInicial) != -1 || frase.indexOf(muletillaFinal) != -1)
-			// Asignamos nuestro booleano como true
-			esJavalandia = true;
+		// Frase sin los espacios
+		String fraseSinEspacios = "";
+		// String anterior pero invertido
+		String fraseSinEspaciosInvertida = "";
 
-		// Devolverá el valor del booleano
-		return esJavalandia;
-	}
+		// Ponemos toda la frase del parámetro en minúsculas para hacer la comprobación
+		frase = frase.toLowerCase();
 
-	/**
-	 * Funcion que muestra la traduccion de la frase introducida
-	 * 
-	 * @param frase Frase a traducir
-	 */
-	public static void traduceJavalandia(String frase) {
-		// Traduccion que mostrará
-		String traduccion = "";
-
-		// Si en la frase existen ambas muletillas
-		if (frase.indexOf(muletillaInicial) != -1 && frase.indexOf(muletillaFinal) != -1)
-			// Mostraremos este mensaje
-			System.out.println("No existe dialecto que utilice ambas muletillas en la misma frase");
-		// En caso contrario
-		else {
-			// Si en la frase está presente sólo la muletilla inicial
-			if (frase.indexOf(muletillaInicial) != -1)
-				// Asignamos a la traducción la frase sin la muletilla inicial
-				traduccion = frase.substring(muletillaInicial.length());
-			// Si en la frase está presente sólo la muletilla final
-			else if (frase.indexOf(muletillaFinal) != -1)
-				// Asignamos a la traducción la frase sin la muletilla final
-				traduccion = frase.substring(0, frase.indexOf(muletillaFinal));
-
-			// Y mostramos la traducción
-			System.out.println(traduccion);
+		// Bucle for que recorre cada caracter de la frase del parámetro
+		for (int i = 0; i < frase.length(); i++) {
+			// Si el caracter en el que estamos no es un espacio
+			if (frase.charAt(i) != ' ')
+				// Lo asignamos y concatenamos en la frase sin espacios
+				fraseSinEspacios += frase.charAt(i);
 		}
 
+		// Bucle for que recorre cada caracter de la frase sin espacios desde el final
+		for (int i = fraseSinEspacios.length() - 1; i >= 0; i--) {
+			// Asignamos y concatenamos en la frase invertida cada caracter de la frase sin
+			// espacios empezando por el final
+			fraseSinEspaciosInvertida += fraseSinEspacios.charAt(i);
+		}
+
+		// Si las dos frases son iguales
+		if (fraseSinEspaciosInvertida.equals(fraseSinEspacios))
+			// Asignamos esPalindromo como true
+			esPalindromo = true;
+
+		// Devolverá nuestra variable booleana
+		return esPalindromo;
 	}
 
 	/**
@@ -85,31 +68,23 @@ public class Ejercicio08 {
 	 */
 	public static void main(String[] args) {
 		// Frase que le pediremos al usuario
-		String frase;
+		String frase = "";
 
-		// Booleano que indica si la frase es de Javalandia (inicializada como false)
-		boolean esJavalandia;
+		// Booleano que determinará si la frase es un palíndromo
+		boolean esPalindromo;
 
-		// Le pedimos al usuario una frase
-		System.out.println("Escriba la frase a traducir");
-		// Y la asignamos a nuestra variable String
+		// Le pedimos una frase al usuario
+		System.out.println("Escriba una palabra o una frase, indicaré si es un palíndromo (evite el uso de tildes)");
+		// Y lo asignamos a la frase
 		frase = sc.nextLine();
 
-		// Llamamos a la función esJavalandia() para asignar un valor a nuestro booleano
-		esJavalandia = esJavalandia(frase);
+		// Llamamos a la funcion esPalindromo() con la frase como parámetro y asignamos
+		// el valor devuelto a nuestro booleano
+		esPalindromo = esPalindromo(frase);
 
-		// Si la frase no es de Javalandia
-		if (!esJavalandia)
-			// Mostramos este mensaje
-			System.out.println("La frase introducida no es de Javalandia");
-		// En caso contrario
-		else
-			// Llamamos a la función traduceJavalandia() para que muestre la traducción
-			// correspondiente
-			traduceJavalandia(frase);
+		// Mostramos el resultado
+		System.out.println(frase + (esPalindromo ? " es " : " no es ") + "un palíndromo");
 
-		// Cerramos el Scanner
-		sc.close();
 	}
 
 }
