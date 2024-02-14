@@ -31,7 +31,7 @@ public class Ejercicio06 {
 		// Y la asignamos a nuestra variable palabra (next() para que no lea espacios)
 		palabra = sc.next();
 
-		// Mientras la palabra introducida no sea nuestra palabra tabú
+		// Mientras la palabra introducida no sea la palabra "fin"
 		while (!palabra.equalsIgnoreCase("fin")) {
 			// Limpiamos el buffer
 			sc.nextLine();
