@@ -34,9 +34,6 @@ public class Ejercicio08 {
 		// String anterior pero invertido
 		String fraseSinEspaciosInvertida = "";
 
-		// Ponemos toda la frase del parámetro en minúsculas para hacer la comprobación
-		frase = frase.toLowerCase();
-
 		// Bucle for que recorre cada caracter de la frase del parámetro
 		for (int i = 0; i < frase.length(); i++) {
 			// Si el caracter en el que estamos no es un espacio
@@ -53,7 +50,7 @@ public class Ejercicio08 {
 		}
 
 		// Si las dos frases son iguales
-		if (fraseSinEspaciosInvertida.equals(fraseSinEspacios))
+		if (fraseSinEspaciosInvertida.equalsIgnoreCase(fraseSinEspacios))
 			// Asignamos esPalindromo como true
 			esPalindromo = true;
 
@@ -83,7 +80,7 @@ public class Ejercicio08 {
 		esPalindromo = esPalindromo(frase);
 
 		// Mostramos el resultado
-		System.out.println(frase + (esPalindromo ? " es " : " no es ") + "un palíndromo");
+		System.out.println("\"" + frase + "\"" + (esPalindromo ? " es " : " no es ") + "un palíndromo");
 
 	}
 
