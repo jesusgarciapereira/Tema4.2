@@ -11,11 +11,11 @@ public class Ejercicio11 {
 	/**
 	 * Tabla de caracteres correspondiente al conjunto 1
 	 */
-	public static char[] conjunto1 = { 'e', 'i', 'k', 'm', 'p', 'q', 'r', 's', 't', 'u', 'v' };
+	public final static char[] CONJUNTO_1 = { 'e', 'i', 'k', 'm', 'p', 'q', 'r', 's', 't', 'u', 'v' };
 	/**
 	 * Tabla de caracteres correspondiente al conjunto 2
 	 */
-	public static char[] conjunto2 = { 'p', 'v', 'i', 'u', 'm', 't', 'e', 'r', 'k', 'q', 's' };
+	public final static char[] CONJUNTO_2 = { 'p', 'v', 'i', 'u', 'm', 't', 'e', 'r', 'k', 'q', 's' };
 
 	/**
 	 * Scanner activado
@@ -79,7 +79,7 @@ public class Ejercicio11 {
 		for (int i = 0; i < textoCodificado.length(); i++) {
 			// Llamamos a la función descodifica() con el caracter correspondiente a la
 			// posición en la que estamos y los concatenamos todos con el texto descodificado
-			textoDescodificado += descodifica(conjunto2, conjunto1, textoCodificado.charAt(i));
+			textoDescodificado += descodifica(CONJUNTO_2, CONJUNTO_1, textoCodificado.charAt(i));
 		}
 
 		// Mostramos el resultado
