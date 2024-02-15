@@ -39,8 +39,10 @@ public class Ejercicio09 {
 		// Booleano que indica si la frase es de Javalandia (inicializada como false)
 		boolean esJavalandia = false;
 
-		// Si alguna de las dos muletillas está presente en la frase
-		if (frase.indexOf(muletillaInicial) != -1 || frase.indexOf(muletillaFinal) != -1)
+		// Si la muletilla inicial está al principio de la frase o la muletilla final
+		// está al final de la frase, pero no las dos a la vez
+		if ((frase.startsWith(muletillaInicial) && !frase.endsWith(muletillaFinal))
+				|| (!frase.startsWith(muletillaInicial) && frase.endsWith(muletillaFinal)))
 			// Asignamos nuestro booleano como true
 			esJavalandia = true;
 
@@ -57,25 +59,17 @@ public class Ejercicio09 {
 		// Traduccion que mostrará
 		String traduccion = "";
 
-		// Si en la frase existen ambas muletillas
-		if (frase.indexOf(muletillaInicial) != -1 && frase.indexOf(muletillaFinal) != -1)
-			// Mostraremos este mensaje
-			System.out.println("No existe dialecto que utilice ambas muletillas en la misma frase");
-		// En caso contrario
-		else {
-			// Si en la frase está presente sólo la muletilla inicial
-			if (frase.indexOf(muletillaInicial) != -1)
-				// Asignamos a la traducción la frase sin la muletilla inicial
-				traduccion = frase.substring(muletillaInicial.length());
-			// Si en la frase está presente sólo la muletilla final
-			else if (frase.indexOf(muletillaFinal) != -1)
-				// Asignamos a la traducción la frase sin la muletilla final
-				traduccion = frase.substring(0, frase.indexOf(muletillaFinal));
+		// Si la muletilla inicial está al principio de la frase
+		if (frase.startsWith(muletillaInicial))
+			// Asignamos a la traducción la frase sin la muletilla inicial
+			traduccion = frase.substring(muletillaInicial.length());
+		// Si la muletilla final está al final de la frase
+		else if (frase.endsWith(muletillaFinal))
+			// Asignamos a la traducción la frase sin la muletilla final
+			traduccion = frase.substring(0, frase.indexOf(muletillaFinal));
 
-			// Y mostramos la traducción
-			System.out.println(traduccion);
-		}
-
+		// Y mostramos la traducción
+		System.out.println("Traducción: " + traduccion);
 	}
 
 	/**
@@ -103,11 +97,13 @@ public class Ejercicio09 {
 			// Mostramos este mensaje
 			System.out.println("La frase introducida no es de Javalandia");
 		// En caso contrario
-		else
+		else {
+			// Mostramos este mensaje
+			System.out.println("La frase es de Javalandia");
 			// Llamamos a la función traduceJavalandia() para que muestre la traducción
 			// correspondiente
 			traduceJavalandia(frase);
-
+		}
 		// Cerramos el Scanner
 		sc.close();
 	}

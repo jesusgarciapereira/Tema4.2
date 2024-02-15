@@ -38,7 +38,7 @@ public class Ejercicio10 {
 		int i = 0;
 
 		// Mientras el contador sea menor que la longitud del conjunto1 se ejecutarán las siguientes instrucciones
-		while (i < conjunto1.length) {
+		while (i < conjunto1.length) { 
 			// Si el caracter del parámetro es igual a algún elemento del conjunto1
 			if (c == conjunto1[i]) {
 				// Se le asignará el elemento correspondiente del conjunto2
