@@ -16,12 +16,12 @@ public class Ejercicio09 {
 	/**
 	 * Muletilla inicial del idioma de Javalandia
 	 */
-	public static String muletillaInicial = "Javalín, javalón\t";
+	public static String muletillaInicial = "Javalín, javalón";
 
 	/**
 	 * Muletilla final del idioma de Javalandia
 	 */
-	public static String muletillaFinal = "\tjavalén, len, len";
+	public static String muletillaFinal = "javalén, len, len";
 
 	/**
 	 * Scanner activado
@@ -60,14 +60,20 @@ public class Ejercicio09 {
 		String traduccion = "";
 
 		// Si la muletilla inicial está al principio de la frase
-		if (frase.startsWith(muletillaInicial))
+		if (frase.startsWith(muletillaInicial)) {
 			// Asignamos a la traducción la frase sin la muletilla inicial
 			traduccion = frase.substring(muletillaInicial.length());
+		}
 		// Si la muletilla final está al final de la frase
-		else if (frase.endsWith(muletillaFinal))
+		else if (frase.endsWith(muletillaFinal)) {
 			// Asignamos a la traducción la frase sin la muletilla final
 			traduccion = frase.substring(0, frase.indexOf(muletillaFinal));
-
+		}
+		
+		// Llamamos a la función trim() para que elimine espacios y tabuladores de
+		// nuestra traducción
+		traduccion = traduccion.trim();
+		
 		// Y mostramos la traducción
 		System.out.println("Traducción: " + traduccion);
 	}
