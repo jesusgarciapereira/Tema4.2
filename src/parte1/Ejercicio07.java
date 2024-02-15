@@ -32,17 +32,19 @@ public class Ejercicio07 {
 	public static int vecesPalabraEnFrase(String frase, String palabra) {
 		// Cantidad de veces que la palabra aparece en la frase (inicializada en 0)
 		int cantPalabra = 0;
+		// String con todas las palabras de la frase
+		String[] tablaPalabras;
 
-		// Ponemos la frase y la palabra en minúsculas para hacer la busqueda
-		frase = frase.toLowerCase();
-		palabra = palabra.toLowerCase();
-		
-		// Mientras exista la palabra en la frase
-		while (frase.indexOf(palabra) != -1) {
-			// La frase se acortará hasta la última apararición de la palabra
-			frase = frase.substring(0, frase.lastIndexOf(palabra));
-			// E incrementamos la cantidad de veces que la palabra aparece en la frase
-			cantPalabra++;
+		// Llamamos a la función split() con la frase y un espacio como separador para
+		// asignarlo a la tabla de las palabras
+		tablaPalabras = frase.split(" ");
+
+		// Bucle for que recorrerá todos los elementos de la tabla de las palabras
+		for (int i = 0; i < tablaPalabras.length; i++) {
+			// Si alguna de las palabras es igual a la palabra que buscamos
+			if (tablaPalabras[i].equalsIgnoreCase(palabra))
+				// Incrementamos el contador
+				cantPalabra++;
 		}
 
 		// Devolverá el resultado del contador
@@ -70,8 +72,9 @@ public class Ejercicio07 {
 
 		// Le pedimos al usuario una palabra
 		System.out.println("Introduzca una palabra para buscar en la frase");
-		// Y la asignamos a la variable palabra
-		palabra = sc.nextLine();
+		// Y la asignamos a la variable palabra, next() porque sólo quiero que lea la
+		// primera palabra que se introduce
+		palabra = sc.next();
 
 		// Asignamos a cantPalabra el valor devuelto por la función
 		// vecesPalabraEnFrase()
