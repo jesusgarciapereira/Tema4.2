@@ -56,26 +56,25 @@ public class Ejercicio09 {
 	 * @param frase Frase a traducir
 	 */
 	public static void traduceJavalandia(String frase) {
-		// Traduccion que mostrará
-		String traduccion = "";
 
 		// Si la muletilla inicial está al principio de la frase
-		if (frase.startsWith(muletillaInicial)) {
-			// Asignamos a la traducción la frase sin la muletilla inicial
-			traduccion = frase.substring(muletillaInicial.length());
-		}
+		if (frase.startsWith(muletillaInicial))
+			// Llamamos a la función replace() para eliminar la muletilla inicial
+			// (sustituirla por vacío)
+			frase = frase.replace(muletillaInicial, "");
+
 		// Si la muletilla final está al final de la frase
-		else if (frase.endsWith(muletillaFinal)) {
-			// Asignamos a la traducción la frase sin la muletilla final
-			traduccion = frase.substring(0, frase.indexOf(muletillaFinal));
-		}
-		
-		// Llamamos a la función trim() para que elimine espacios y tabuladores de
-		// nuestra traducción
-		traduccion = traduccion.trim();
-		
-		// Y mostramos la traducción
-		System.out.println("Traducción: " + traduccion);
+		else if (frase.endsWith(muletillaFinal))
+			// Llamamos a la función replace() para eliminar la muletilla final (sustituirla
+			// por vacío)
+			frase = frase.replace(muletillaFinal, "");
+
+		// Llamamos a la función trim() para que elimine espacios y tabuladores de la
+		// frase
+		frase = frase.trim();
+
+		// Y mostramos la frase
+		System.out.println("Traducción: " + frase);
 	}
 
 	/**
@@ -105,8 +104,8 @@ public class Ejercicio09 {
 		// En caso contrario
 		else {
 			// Mostramos este mensaje
-			System.out.println("La frase es de Javalandia");
-			// Llamamos a la función traduceJavalandia() para que muestre la traducción
+			System.out.println("La frase es de Javalandia");		
+			// Y llamamos a la función traduceJavalandia() para que muestre la traducción
 			// correspondiente
 			traduceJavalandia(frase);
 		}
