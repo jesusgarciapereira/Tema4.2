@@ -29,28 +29,22 @@ public class Ejercicio08 {
 		// Variable booleana inicializada como falso
 		boolean esPalindromo = false;
 
-		// Frase sin los espacios
-		String fraseSinEspacios = "";
-		// String anterior pero invertido
-		String fraseSinEspaciosInvertida = "";
+		// Frase sin espacios invertida
+		String fraseInvertida = "";
+		
+		// Le quitamos los espacios a la frase
+		frase = frase.replace(" ", "");
+		
 
-		// Bucle for que recorre cada caracter de la frase del parámetro
-		for (int i = 0; i < frase.length(); i++) {
-			// Si el caracter en el que estamos no es un espacio
-			if (frase.charAt(i) != ' ')
-				// Lo asignamos y concatenamos en la frase sin espacios
-				fraseSinEspacios += frase.charAt(i);
-		}
-
-		// Bucle for que recorre cada caracter de la frase sin espacios desde el final
-		for (int i = fraseSinEspacios.length() - 1; i >= 0; i--) {
+		// Bucle for que recorre cada caracter de la frase  desde el final
+		for (int i = frase.length() - 1; i >= 0; i--) {
 			// Asignamos y concatenamos en la frase invertida cada caracter de la frase sin
 			// espacios empezando por el final
-			fraseSinEspaciosInvertida += fraseSinEspacios.charAt(i);
+			fraseInvertida += frase.charAt(i);
 		}
 
 		// Si las dos frases son iguales
-		if (fraseSinEspaciosInvertida.equalsIgnoreCase(fraseSinEspacios))
+		if (fraseInvertida.equalsIgnoreCase(frase))
 			// Asignamos esPalindromo como true
 			esPalindromo = true;
 
