@@ -8,7 +8,11 @@ import java.util.Scanner;
  * tanto la palabra como el número de caracteres de la misma.
  */
 public class Ejercicio12 {
-
+	/**
+	 * Método main
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// Frase que le pedimos al usuario
 		String frase = "";
@@ -19,15 +23,16 @@ public class Ejercicio12 {
 
 		// Activamos el Scanner
 		Scanner sc = new Scanner(System.in);
-		
+
 		// Le pedimos al usuario una frase
 		System.out.println("Introduzca una frase");
 		// Y la asignamos
 		frase = sc.nextLine();
-		
-		// Asignamos a palabras cada una de las palabras de la frase llamando al método split
+
+		// Asignamos a palabras cada una de las palabras de la frase llamando al método
+		// split
 		palabras = frase.split(" ");
-		
+
 		// Bucle for que recorrerá cada palabra de la tabla palabras
 		for (int i = 0; i < palabras.length; i++) {
 			// Si la longitud de la palabra es mayor que la de la palabra más larga
@@ -35,10 +40,10 @@ public class Ejercicio12 {
 				// La asignamos como actual palabra más larga
 				palabraMasLarga = palabras[i];
 		}
-		
+
 		// Mostramos el resultado
 		System.out.println("En la frase \"" + frase + "\" la palabra más larga es: \"" + palabraMasLarga + "\"");
-		
+
 		// Cerramos el Scanner
 		sc.close();
 
