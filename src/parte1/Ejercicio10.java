@@ -33,26 +33,29 @@ public class Ejercicio10 {
 	 * @return Caracter del parametro, modificado o no
 	 */
 	public static char codifica(char conjunto1[], char conjunto2[], char c) {
-
+		// Caracter cambiado
+		char caracterCambiado= ' ';
+		// Boolean encontrado
+		boolean encontrado = false;
 		// Variable local del contador para nuestro bucle while
 		int i = 0;
 
-		// Mientras el contador sea menor que la longitud del conjunto1 se ejecutarán las siguientes instrucciones
-		while (i < conjunto1.length) { 
+		// Mientras el contador sea menor que la longitud del conjunto1 se ejecutarán
+		// las siguientes instrucciones
+		while (!encontrado && i < conjunto1.length) {
 			// Si el caracter del parámetro es igual a algún elemento del conjunto1
 			if (c == conjunto1[i]) {
-				// Se le asignará el elemento correspondiente del conjunto2
-				c = conjunto2[i];
-				// Y asignamos el contador como la longitud del conjunto1 menos 1 para así forzar la
-				// salida del bucle
-				i = conjunto1.length - 1;
+				// Se le asignará el elemento correspondiente del conjunto2 al caracter cambiado
+				caracterCambiado = conjunto2[i];
+				// Y asignamos encontrado com true
+				encontrado = true;
 			}
 			// En cada iteración incrementamos el contador
 			i++;
 		}
 
 		// Devolverá el caracter char c
-		return c;
+		return caracterCambiado;
 
 	}
 
