@@ -54,7 +54,7 @@ public class Ejercicio10 {
 			i++;
 		}
 
-		// Devolverá el caracter char c
+		// Devolverá el caracter cambiado
 		return caracterCambiado;
 
 	}
