@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Clase que representa al Ejercicio 14 del apartado Tema 4.2 Parte 1: Juego del
+ * Clase que representa al Ejercicio 15 del apartado Tema 4.2 Parte 1: Juego del
  * anagrama
  */
 public class Ejercicio15 {
