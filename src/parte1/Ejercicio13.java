@@ -38,7 +38,7 @@ public class Ejercicio13 {
 		char letrasFrase1[];
 		char letrasFrase2[];
 
-		// Llamamos a la función replace() para eliminar los espacios a las fraases
+		// Llamamos a la función replace() para eliminar los espacios a las frases
 		frase1 = frase1.replace(" ", "");
 		frase2 = frase2.replace(" ", "");
 
