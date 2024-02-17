@@ -57,6 +57,8 @@ public class Ejercicio15 {
 			// Ordenamos la tabla de posiciones ya seleccionadas
 			Arrays.sort(posicionesYaSeleccionadas);
 		}
+		// Le quitamos los espacios al texto desordenado
+		textoDesordenado = textoDesordenado.replace(" ", "");
 
 		// Devolverá el texto desordenado
 		return textoDesordenado;
@@ -72,22 +74,32 @@ public class Ejercicio15 {
 		String texto = "";
 		// Texto desordenado que mostraremos
 		String textoDesordenado = "";
-//		// Texto que le pediremos al jugador 2
-//		String intentaAcertar = "";
+		// Texto que le pediremos al jugador 2
+		String intentaAcertar = "";
 
 		// Mientras el texto esté vacío se ejecutarán estas instrucciones
-		while(texto.isEmpty()) {
-		// Le pedimos al usuario un texto
-		System.out.println("Jugador 1, introduzca un texto");
-		// Y lo asignamos al texto
-		texto = sc.nextLine();
+		while (texto.isEmpty()) {
+			// Le pedimos al jugador 1 un texto
+			System.out.println("Jugador 1, introduzca un texto");
+			// Y lo asignamos al texto
+			texto = sc.nextLine();
 		}
 		// Asignamos al texto desordenado el valor vuelto por la función
 		// desordenaTexto()
 		textoDesordenado = desordenaTexto(texto);
-
 		// Y lo mostramos
 		System.out.println(textoDesordenado);
+
+		// Mientras el texto sea distinta de la respuesta del jugador dos
+		while (!texto.equalsIgnoreCase(intentaAcertar)) {
+			// Le pedimos al jugador 2 que intente acertar
+			System.out.println("Jugador 2, intente acertar");
+			// Y lo asignamos a la variable intentaAcertar
+			intentaAcertar = sc.nextLine();
+		}
+
+		// Al salir del bucle, mostramos el mensaje de victoria
+		System.out.println("¡Correcto!, la respuesta era \"" + texto + "\"");
 		
 		// Cerramos el Scanner
 		sc.close();
