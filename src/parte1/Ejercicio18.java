@@ -19,6 +19,7 @@ public class Ejercicio18 {
  * @return Codigo HTML con el titulo y el contenido introducido
  */
 	public static String codigoHTML(String titulo, String contenido) {
+		// Devuelve este texto
 		return "	<!DOCTYPE html>\n" 
 				+ "	<html>\n" 
 				+ "		<head>\n" 
