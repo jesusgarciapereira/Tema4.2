@@ -8,6 +8,15 @@ import java.util.Scanner;
  */
 public class Ejercicio17 {
 	/**
+	 * Constante inicio del comentario
+	 */
+	public static final String INICIO = "/*";
+	/**
+	 * Constante final del comentario
+	 */
+	public static final String FIN = "*/";
+
+	/**
 	 * Scanner activado
 	 */
 	static Scanner sc = new Scanner(System.in);
@@ -32,11 +41,11 @@ public class Ejercicio17 {
 		duplicadoCodigo += codigo;
 
 		// Mientras la copia del código del parámetro contenga /* y */
-		while (duplicadoCodigo.contains("/*") && duplicadoCodigo.contains("*/")) {
+		while (duplicadoCodigo.contains(INICIO) && duplicadoCodigo.contains(FIN)) {
 			// LLamamos a la funcion indexOf() para determinar la posición de inicio y de
 			// final del comentario
-			posicionInicio = duplicadoCodigo.indexOf("/*");
-			posicionFinal = duplicadoCodigo.indexOf("*/");
+			posicionInicio = duplicadoCodigo.indexOf(INICIO);
+			posicionFinal = duplicadoCodigo.indexOf(FIN);
 			// Asignamos al texto comentario la subcadena extraída de la copia dek código
 			// desde la posición de inicio y de final incluidos
 			comentario = duplicadoCodigo.substring(posicionInicio, posicionFinal + 2);
